@@ -23,42 +23,6 @@ services:
     networks:
       - dockernet
 
-  prisma-user:
-    image: node:20
-    container_name: prisma-user-cli
-    working_dir: /app
-    volumes:
-      - ./services/user-service:/app
-    networks:
-      - dockernet
-    depends_on:
-      - postgres
-    entrypoint: ["sh", "-c", "npx prisma generate"]
-
-  prisma-task:
-    image: node:20
-    container_name: prisma-task-cli
-    working_dir: /app
-    volumes:
-      - ./services/task-service:/app
-    networks:
-      - dockernet
-    depends_on:
-      - postgres
-    entrypoint: ["sh", "-c", "npx prisma generate"]
-
-  prisma-category:
-    image: node:20
-    container_name: prisma-category-cli
-    working_dir: /app
-    volumes:
-      - ./services/category-service:/app
-    networks:
-      - dockernet
-    depends_on:
-      - postgres
-    entrypoint: ["sh", "-c", "npx prisma generate"]
-
 volumes:
   pgdata:
 
